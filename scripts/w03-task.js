@@ -82,21 +82,31 @@ const divideNumbersArrow = () => {
 document.querySelector('#divideNumbers').addEventListener('click', divideNumbers);
 
 /* Decision Structure */
-document.querySelector('#getTotalDue').addEventListener('click', function() {
-    // Declaring and instantiating a variable to store the numeric value entered by the user in the subtotal field
-    let subtotal = parseFloat(document.querySelector('#subtotal').value);
+document.querySelector('#getTotal').addEventListener('click', function() {
+    // Get the numeric value entered by the user in the subtotal field
+    let subtotalInput = document.querySelector('#subtotal').value;
     
-    // Checking if the membership checkbox is checked
-    let membershipChecked = document.querySelector('#membership').checked;
-    
-    // Applying a 20% discount if the membership checkbox is checked
-    if (membershipChecked) {
-        subtotal *= 0.8; // 20% discount applied
+    // Check if the subtotalInput is not empty
+    if (subtotalInput !== '') {
+        // Convert the input value to a floating-point number
+        let subtotal = parseFloat(subtotalInput);
+        
+        // Checking if the membership checkbox is checked
+        let membershipChecked = document.querySelector('#member').checked;
+        
+        // Applying a 20% discount if the membership checkbox is checked
+        if (membershipChecked) {
+            subtotal *= 0.8; // 20% discount applied
+        }
+        
+        // Output the total to the total span in the format with two decimals using a template string
+        document.querySelector('#total').textContent = `\$${subtotal.toFixed(2)}`;
+    } else {
+        // If subtotal is empty, display an error message or handle the case appropriately
+        alert('Please enter a subtotal value.');
     }
-    
-    // Output the total to the total span in the format with two decimals using a template string
-    document.querySelector('#total').textContent = `\$${subtotal.toFixed(2)}`;
 });
+
 /* ARRAY METHODS - Functional Programming */
 /* Output Source Array */
 // Declare and instantiate an array variable to hold the numbers 1 through 13
