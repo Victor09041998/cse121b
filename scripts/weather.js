@@ -1,3 +1,4 @@
+//FUNCTIONS
 const apiKey = '6a1a3d12e180e7afea531388e72b95c0'; // 'YOUR_API_KEY'
 const apiUrl = 'https://api.openweathermap.org/data/2.5/';
 
@@ -28,11 +29,13 @@ async function getWeather() {
 function displayCurrentWeather(data) {
   // Get the div element where the weather information will be displayed
   const currentWeatherDiv = document.getElementById('currentWeather');
+
   // Clear any existing content in the div
   currentWeatherDiv.innerHTML = 'getWeather';
 
   // Destructure the data object to extract relevant weather information
   const { name, main, weather } = data;
+
   // Extract weather description, temperature, and humidity
   const weatherDescription = weather[0].description;
   const temperature = main.temp;
